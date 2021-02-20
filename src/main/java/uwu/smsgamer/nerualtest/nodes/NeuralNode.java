@@ -44,6 +44,9 @@ public class NeuralNode extends AbstractNode {
             this.weights[i] += this.settings.random(amount);
             this.adds[i] += this.settings.random(amount);
         }
+        for (AbstractNode input : this.inputs) {
+            input.vary(amount);
+        }
     }
 
     protected void checkSize() {

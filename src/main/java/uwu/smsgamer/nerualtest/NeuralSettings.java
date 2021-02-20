@@ -34,4 +34,10 @@ public class NeuralSettings {
     public float random() {
         return random(this.bounds);
     }
+
+    public void setNodes() {
+        for (int i = 0; i < this.instances.length; i++) {
+            this.instances[i].setNodes();
+        }
+    }
 }

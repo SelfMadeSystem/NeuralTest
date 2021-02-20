@@ -61,4 +61,10 @@ public class NeuralInstance {
         assert setNodes instanceof NeuralNode[];
         outputNodes = (NeuralNode[]) setNodes;
     }
+
+    public void vary(float amount) {
+        for (NeuralNode node : outputNodes) {
+            node.vary(amount);
+        }
+    }
 }

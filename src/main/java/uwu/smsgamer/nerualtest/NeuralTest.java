@@ -9,12 +9,19 @@ public class NeuralTest {
           new StaticNode(settings, 0), new StaticNode(settings, 0),};
         settings.setInstances(5, nodes);
         settings.setNodes();
-        for (int i = 0; i < 3; i++) {
-            for (NeuralInstance instance : settings.instances) {
-                System.out.println(instance.outputNodes[0].getOutput());
-                instance.vary(0.01f);
-            }
-            System.out.println("====================================================");
+        for (NeuralInstance instance : settings.instances) {
+            System.out.println(instance.outputNodes[0].getOutput());
         }
+        System.out.println("====================================================");
+        nodes[0].value = 1;
+        for (NeuralInstance instance : settings.instances) {
+            System.out.println(instance.outputNodes[0].getOutput());
+        }
+        System.out.println("====================================================");
+        nodes[1].value = 1;
+        for (NeuralInstance instance : settings.instances) {
+            System.out.println(instance.outputNodes[0].getOutput());
+        }
+        System.out.println("====================================================");
     }
 }

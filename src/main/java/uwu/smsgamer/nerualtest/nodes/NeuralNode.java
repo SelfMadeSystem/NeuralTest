@@ -55,4 +55,13 @@ public class NeuralNode extends AbstractNode {
         if (this.weights.length != this.inputCount) throw new IllegalStateException("Weights length not same as input count!");
         if (this.adds.length != this.inputCount) throw new IllegalStateException("Adds length not same as input count!");
     }
+
+    @Override
+    public NeuralNode clone() {
+        NeuralNode clone = (NeuralNode) super.clone();
+        for (int i = 0; i < clone.inputs.length; i++) {
+            clone.inputs[i] = clone.inputs[i].clone();
+        }
+        return clone;
+    }
 }

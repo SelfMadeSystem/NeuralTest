@@ -2,9 +2,7 @@ package uwu.smsgamer.nerualtest;
 
 import uwu.smsgamer.nerualtest.nodes.*;
 
-import java.util.*;
-
-public class NeuralInstance {
+public class NeuralInstance implements Cloneable {
     public NeuralSettings settings;
     public int inputs;
     public int outputs;
@@ -65,6 +63,20 @@ public class NeuralInstance {
     public void vary(float amount) {
         for (NeuralNode node : outputNodes) {
             node.vary(amount);
+        }
+    }
+
+    @Override
+    public NeuralInstance clone() {
+        try {
+            NeuralInstance clone = (NeuralInstance) super.clone();
+            for (int i = 0; i < clone.outputNodes.length; i++) {
+                NeuralNode outputNode = clone.outputNodes[i];
+                clone.outputNodes[i] = outputNode.clone();
+            }
+            return clone;
+        } catch (CloneNotSupportedException e) {
+            throw new RuntimeException(e);
         }
     }
 }

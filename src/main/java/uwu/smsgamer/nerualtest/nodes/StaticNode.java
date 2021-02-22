@@ -19,4 +19,9 @@ public class StaticNode extends AbstractNode {
     public void vary(float amount) {
         // static; don't do shit
     }
+
+    @Override
+    public AbstractNode clone() {
+        return this;
+    }
 }

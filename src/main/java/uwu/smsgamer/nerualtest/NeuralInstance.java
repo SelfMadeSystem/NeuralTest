@@ -70,9 +70,9 @@ public class NeuralInstance implements Cloneable {
     public NeuralInstance clone() {
         try {
             NeuralInstance clone = (NeuralInstance) super.clone();
-            for (int i = 0; i < clone.outputNodes.length; i++) {
-                NeuralNode outputNode = clone.outputNodes[i];
-                clone.outputNodes[i] = outputNode.clone();
+            clone.outputNodes = new NeuralNode[outputNodes.length];
+            for (int i = 0; i < outputNodes.length; i++) {
+                clone.outputNodes[i] = outputNodes[i].clone();
             }
             return clone;
         } catch (CloneNotSupportedException e) {

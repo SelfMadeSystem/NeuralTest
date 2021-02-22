@@ -43,9 +43,7 @@ public class NeuralNode extends AbstractNode {
         for (int i = 0; i < inputCount; i++) {
             this.weights[i] += this.settings.random(amount);
             this.adds[i] += this.settings.random(amount);
-        }
-        for (AbstractNode input : this.inputs) {
-            input.vary(amount);
+            this.inputs[i].vary(amount);
         }
     }
 
@@ -59,8 +57,11 @@ public class NeuralNode extends AbstractNode {
     @Override
     public NeuralNode clone() {
         NeuralNode clone = (NeuralNode) super.clone();
-        for (int i = 0; i < clone.inputs.length; i++) {
-            clone.inputs[i] = clone.inputs[i].clone();
+        clone.inputs = new AbstractNode[inputs.length];
+        clone.weights = this.weights.clone();
+        clone.adds = this.adds.clone();
+        for (int i = 0; i < inputs.length; i++) {
+            clone.inputs[i] = inputs[i].clone();
         }
         return clone;
     }
